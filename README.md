@@ -7,7 +7,7 @@ In development, you can use an external LLM, such as `together.ai`.
 
 ![Reference Architecture](ref.png)
 
-There are two main flows: the CI (testing) flow where you can run `helix test` locally or in CI. (You'll need to run ngrok so GitHub actions can reach your laptop.)
+There are two main flows: the CI (testing) flow where you can run `helix test` locally or in CI.
 
 # Setup
 
@@ -74,7 +74,7 @@ flux install
 Add your fork of this repo to flux:
 
 ```
-flux create source git podinfo \
+flux create source git aispecs \
     --url=https://github.com/<yourusername>/genai-cicd-ref \
     --branch=main
 ```
@@ -86,6 +86,8 @@ flux create kustomization aispecs \
     --path="./aispecs" --prune=true \
     --interval=1m --target-namespace=default
 ```
+
+[TODO: set up ngrok and set up env vars in GHA so that CI runs against local cluster.]
 
 # Continuous Integration: Testing
 
@@ -107,6 +109,8 @@ Push to CI:
 git commit -am "update"
 git push
 ```
+
+(CI won't work unless you configure ngrok which is outside of the scope of this tutorial for now.)
 
 # Continuous Delivery: Deployment via GitOps
 
