@@ -38,7 +38,6 @@ For this deployment, to simplify things, we'll use [Together.ai](https://togethe
 ```
 export HELIX_VERSION=1.4.0-rc3
 export TOGETHER_API_KEY=<your-together-key>
-./scripts/kind_helm_install.sh
 bash kind_helm_install.sh
 ```
 
