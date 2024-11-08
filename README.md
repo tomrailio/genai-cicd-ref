@@ -33,7 +33,7 @@ Requirements:
 
 We will run the `kind_helm_install.sh` script which will install helix in kind via helm.
 
-For this deployment, to simplify things, we'll use [Together.ai](https://together.ai) as an external LLM provider, but you can later attach a Helix GPU runner [in Kubernetes](https://docs.helix.ml/helix/private-deployment/manual-install/kubernetes/#deploying-a-runner) or [otherwise](https://docs.helix.ml/helix/private-deployment/manual-install/).
+For this deployment, to simplify things, we'll use [Together.ai](https://together.ai) as an external LLM provider (which provides free credit for new accounts), but you can later attach a Helix GPU runner [in Kubernetes](https://docs.helix.ml/helix/private-deployment/manual-install/kubernetes/#deploying-a-runner) or [otherwise](https://docs.helix.ml/helix/private-deployment/manual-install/).
 
 ```
 export HELIX_VERSION=1.4.0-rc3
@@ -41,27 +41,47 @@ export TOGETHER_API_KEY=<your-together-key>
 bash kind_helm_install.sh
 ```
 
-Run the commands it prints at the end to start a port-forward session. Leave that running and open a new terminal window.
-
 ```
-kubectl get po
+watch kubectl get po
 ```
 
 Should show helix starting up and running in your local kind cluster.
+Once all the pods are running, `ctrl+c` the `watch` and run the four commands the script printed at the end of the install to start a port-forward session. Leave that running.
+
 Load [http://localhost:8080](http://localhost:8080) and you should see Helix. It takes a few minutes to boot.
 
 Register for a new account (in your local helix install, through the web interface) and log in.
 
-Install the aispec CRDs and start the Helix Kubernetes Operator. For now we do this by cloning the helix repo, but these will be properly packaged and released as container images soon.
+Install the aispec CRDs and start the Helix Kubernetes Operator. For now we do this by cloning the helix repo, but these will be properly packaged and released as container images soon. In a new terminal session (you will need go installed - e.g `brew install go`):
 
 ```
 git clone https://github.com/helixml/helix
 cd helix/operator
 make install
+```
+
+Go to your helix account page (click the ... button in the bottom left and go to Account & API section) then copy and paste the `export` commands for `HELIX_URL` and `HELIX_API_KEY` from the "Set authentication credentials" section. Run them, then run the Helix Kubernetes Operator:
+
+```
 make run
 ```
 
-Leave the operator running in another terminal window. You should have two terminal windows now: one with the `port-forward` running in it and another with the helix operator running in it.
+Leave the operator running in this terminal window. You should have two terminal windows now: one with the `port-forward` running in it and another with the helix operator running in it.
+
+Test that the operator is working by deploying an aispec just with `kubectl` in a new terminal window:
+```
+kubectl apply -f aispecs/money.yaml
+```
+
+It should look like this:
+
+![Reference Architecture](3-terminals.png)
+
+Inside helix, the app should now be working. Go to the app store on the homepage, then launch the money app:
+
+![Reference Architecture](exhangerates.png)
+
+You can use it to query live currency exchange rates.
 
 ## 3. Install Flux
 
