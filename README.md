@@ -83,6 +83,11 @@ Inside helix, the app should now be working. Go to the app store on the homepage
 
 You can use it to query live currency exchange rates.
 
+Clean up the app:
+```
+kubectl delete -f aispecs/money.yaml
+```
+
 ## 3. Install Flux
 
 We will use Flux to automate GitOps deployments of changes to this app, rather than manually using `kubectl`.
