@@ -75,15 +75,17 @@ kubectl apply -f aispecs/money.yaml
 
 It should look like this:
 
-![Reference Architecture](3-terminals.png)
+![3 terminals showing portforward and operator running side by side](3-terminals.png)
 
 Inside helix, the app should now be working. Go to the app store on the homepage, then launch the money app:
 
-![Reference Architecture](exchangerates.png)
+![Screenshot of Exchange Rates Chatbot](exchangerates.png)
 
 You can use it to query live currency exchange rates.
 
 ## 3. Install Flux
+
+We will use Flux to automate GitOps deployments of changes to this app, rather than manually using `kubectl`.
 
 Install flux in the kind cluster:
 ```
