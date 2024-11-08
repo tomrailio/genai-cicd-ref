@@ -79,7 +79,7 @@ It should look like this:
 
 Inside helix, the app should now be working. Go to the app store on the homepage, then launch the money app:
 
-![Reference Architecture](exhangerates.png)
+![Reference Architecture](exchangerates.png)
 
 You can use it to query live currency exchange rates.
 
