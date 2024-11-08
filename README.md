@@ -122,4 +122,4 @@ flux get kustomizations --watch
 ```
 Flux can take up to a minute to notice the change in the repo.
 
-Open the app in your browser, and observe the new improved GenAI capabilities!
+Open the app in your browser by navigating to the "App Store" in your local helix install web UI, and observe the new improved GenAI capabilities!
