@@ -25,11 +25,11 @@ cd genai-cicd-ref
 ## 2. Install helix in kind
 
 Requirements:
-* [kind](https://kind.sigs.k8s.io/docs/user/quick-start/#installation)
 * [docker](https://www.docker.com/)
-* [kubectl](https://kubernetes.io/docs/tasks/tools/)
-* [helm](https://helm.sh/docs/intro/install/)
-* [flux cli](https://fluxcd.io/flux/installation/)
+* [kind](https://kind.sigs.k8s.io/docs/user/quick-start/#installation) or `brew install kind`
+* [kubectl](https://kubernetes.io/docs/tasks/tools/) or `brew install kubectl`
+* [helm](https://helm.sh/docs/intro/install/) or `brew install helm`
+* [flux cli](https://fluxcd.io/flux/installation/) or `brew install fluxcd/tap/flux`
 
 We will run the `kind_helm_install.sh` script which will install helix in kind via helm.
 
