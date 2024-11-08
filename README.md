@@ -7,7 +7,7 @@ In development, you can use an external LLM, such as `together.ai`.
 
 ![Reference Architecture](ref.png)
 
-There are two main flows: the CI (testing) flow where you can run `helix test` locally or in CI.
+There are two main flows: the CI (testing) flow where you can run `helix test` locally or in CI. And the CD flow where changes to AI apps merged to the main branch get reconciled into the cluster using Flux.
 
 # Setup
 
