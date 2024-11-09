@@ -142,7 +142,7 @@ flux create kustomization aispecs \
 
 ## 4. Set up GitHub Actions
 
-So that the GitHub Actions in this repository can run against your local kind cluster, we'll run ngrok and configure GitHub Actions with the appropriate HELIX_URL and HELIX_API_KEY secrets.
+So that the GitHub Actions in this repository can run against your local kind cluster, we'll run ngrok and configure GitHub Actions with the appropriate HELIX_URL variable and HELIX_API_KEY secret.
 
 Start ngrok forwarding to your local Helix server
 ```
@@ -156,21 +156,21 @@ curl -s localhost:4040/api/tunnels | jq -r '.tunnels[0].public_url'
 
 The output will look something like: `https://abc123.ngrok.io`
 
-Use this URL as your HELIX_URL in GitHub Actions secrets. Get the HELIX_API_KEY from your account page at [http://localhost:8080/account](http://localhost:8080/account)
-
-Add the secrets to your GitHub repository:
+Add the URL as a variable and API key as a secret to your GitHub repository:
 
 1. Go to your GitHub repository settings for this repo
 2. Click on "Settings" tab
 3. In the left sidebar, click "Secrets and variables" -> "Actions"
-4. Click "New repository secret"
-5. Add the following secrets:
+4. Click the "Variables" tab
+5. Click "New repository variable"
    - Name: `HELIX_URL`
-     Value: The ngrok URL from above (e.g. `https://abc123.ngrok.io`)
+   - Value: The ngrok URL from above (e.g. `https://abc123.ngrok.io`)
+6. Click the "Secrets" tab
+7. Click "New repository secret"
    - Name: `HELIX_API_KEY` 
-     Value: The API key from your Helix account page
+   - Value: The API key from your Helix account page
 
-These secrets will be used by the GitHub Actions workflows to authenticate with your local Helix instance.
+These credentials will be used by the GitHub Actions workflows to authenticate with your local Helix instance.
 
 
 # Continuous Integration: Testing
