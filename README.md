@@ -204,7 +204,7 @@ git commit -am "update"
 git push
 ```
 
-(CI won't work unless you configure ngrok which is outside of the scope of this tutorial for now.)
+You will see the tests run in github actions when you make a pull request.
 
 # Continuous Delivery: Deployment via GitOps
 
