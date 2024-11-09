@@ -6,7 +6,7 @@ This example will run entirely locally on a `kind` cluster on your laptop.
 In development, we will use an external LLM `together.ai`.
 Helix will provide the versioned AI app implementation (prompt management, knowledge/RAG and API integrations) and evals (testing). Flux will manage deployment.
 
-![Reference Architecture](ref.png)
+![Reference Architecture](images/ref.png)
 
 There are two main flows: the CI (testing) flow where you can run `helix test` locally or in CI. And the CD flow where changes to AI apps merged to the main branch get reconciled into the cluster using Flux.
 
@@ -41,17 +41,34 @@ export HELIX_VERSION=1.4.0-rc4
 export TOGETHER_API_KEY=<your-together-key>
 bash kind_helm_install.sh
 ```
+If at any point you need to start over, you can just re-run the script (it will tear down the kind cluster and recreate it from scratch).
 
 ```
 watch kubectl get po
 ```
 
-Should show helix starting up and running in your local kind cluster.
+This will show helix starting up and running in your local kind cluster.
 Once all the pods are running, `ctrl+c` the `watch` and run the four commands the script printed at the end of the install to start a port-forward session. Leave that running.
 
 Load [http://localhost:8080](http://localhost:8080) and you should see Helix. It takes a few minutes to boot.
 
 Register for a new account (in your local helix install, through the web interface) and log in.
+
+<details>
+<summary>Detailed steps for registering and logging in</summary>
+
+1. In a web browser go to: http://localhost:8080/
+![helix_login_page_screenshot](images/helix_login_page_screenshot.png)
+2. Register local user
+   1. Bottom left pane - click on "Login/Register"
+![helix_login_register_link_screenshot](images/helix_login_register_link_screenshot.png)
+   2. Click on "Register" to begin the user registeration process
+![user_registeration_link_screenshot](images/user_registeration_link_screenshot.png)
+   3. Complete user registration
+![complete_user_registeration_screenshot](images/complete_user_registeration_screenshot.png)
+2. To access the app, log in to the local HelixML UI with your registered user credentials
+![try_out_helix_ui_screenshot](images/try_out_helix_ui_screenshot.png)
+</details>
 
 Install the aispec CRDs and start the Helix Kubernetes Operator. For now we do this by cloning the helix repo, but these will be properly packaged and released as container images soon. In a new terminal session (you will need go installed - e.g `brew install go`):
 
@@ -76,11 +93,11 @@ kubectl apply -f aispecs/money.yaml
 
 It should look like this:
 
-![3 terminals showing portforward and operator running side by side](3-terminals.png)
+![3 terminals showing portforward and operator running side by side](images/3-terminals.png)
 
 Inside helix, the app should now be working. Go to the app store on the homepage, then launch the money app:
 
-![Screenshot of Exchange Rates Chatbot](exchangerates.png)
+![Screenshot of Exchange Rates Chatbot](images/exchangerates.png)
 
 You can use it to query live currency exchange rates.
 
