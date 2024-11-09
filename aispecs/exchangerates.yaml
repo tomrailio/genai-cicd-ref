@@ -6,9 +6,16 @@ spec:
   assistants:
     - model: meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo
       type: text
+      # Tests for this assistant
+      tests:
+      - name: check usd to gbp rate
+        steps:
+          - prompt: what is the usd to gbp exchange rate?
+            expected_output: the usd to gbp exchange rate
       apis:
         - name: Exchange Rates API
           description: Get latest currency exchange rates
+          url: https://open.er-api.com/v6
           schema: |-
             openapi: 3.0.0
             info:
@@ -68,4 +75,3 @@ spec:
                                   CAD:
                                     type: number
                                     example: 1.34521
-          url: https://open.er-api.com/v6

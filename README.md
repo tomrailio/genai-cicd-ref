@@ -31,13 +31,15 @@ Requirements:
 * [kubectl](https://kubernetes.io/docs/tasks/tools/) or `brew install kubectl`
 * [helm](https://helm.sh/docs/intro/install/) or `brew install helm`
 * [flux cli](https://fluxcd.io/flux/installation/) or `brew install fluxcd/tap/flux`
+* [helix cli](https://docs.helix.ml/helix/private-deployment/controlplane/#just-install-the-cli) or `curl -sL -O https://get.helix.ml/install.sh && bash install.sh --cli --helix-version 1.4.0-rc6`
+* [ngrok](https://ngrok.com/docs/getting-started/) or `brew install ngrok/ngrok/ngrok`
 
 We will run the `kind_helm_install.sh` script which will create a kind cluster and install helix in it via helm.
 
 For this deployment, to simplify things, we'll use [Together.ai](https://together.ai) as an external LLM provider (which provides free credit for new accounts), but you can later attach a Helix GPU runner [in Kubernetes](https://docs.helix.ml/helix/private-deployment/manual-install/kubernetes/#deploying-a-runner) or [otherwise](https://docs.helix.ml/helix/private-deployment/manual-install/).
 
 ```
-export HELIX_VERSION=1.4.0-rc4
+export HELIX_VERSION=1.4.0-rc6
 export TOGETHER_API_KEY=<your-together-key>
 bash kind_helm_install.sh
 ```
@@ -85,7 +87,7 @@ cd helix/operator
 make install
 ```
 
-Go to your helix account page (click the ... button in the bottom left and go to Account & API section) then copy and paste the `export` commands for `HELIX_URL` and `HELIX_API_KEY` from the "Set authentication credentials" section. Run them, then run the Helix Kubernetes Operator:
+Go to your [helix account page](http://localhost:8080/account) (click the ... button in the bottom left and go to Account & API section) then copy and paste the `export` commands for `HELIX_URL` and `HELIX_API_KEY` from the "Set authentication credentials" section. Run them, then run the Helix Kubernetes Operator:
 
 ```
 make run
@@ -102,7 +104,7 @@ It should look like this:
 
 ![3 terminals showing portforward and operator running side by side](images/3-terminals.png)
 
-Inside helix, the app should now be working. Go to the app store on the homepage, then launch the money app:
+Inside helix, the app should now be working. Go to the app store on the homepage, then launch the exchange rates app:
 
 ![Screenshot of Exchange Rates Chatbot](images/exchangerates.png)
 
@@ -138,11 +140,42 @@ flux create kustomization aispecs \
     --interval=1m --target-namespace=default
 ```
 
-[TODO: set up ngrok and set up env vars in GHA so that CI runs against local cluster.]
+## 4. Set up GitHub Actions
+
+So that the GitHub Actions in this repository can run against your local kind cluster, we'll run ngrok and configure GitHub Actions with the appropriate HELIX_URL and HELIX_API_KEY secrets.
+
+Start ngrok forwarding to your local Helix server
+```
+ngrok http 8080
+```
+
+In a new terminal, get the public URL:
+```
+curl -s localhost:4040/api/tunnels | jq -r '.tunnels[0].public_url'
+```
+
+The output will look something like: https://abc123.ngrok.io
+
+Use this URL as your HELIX_URL in GitHub Actions secrets. Get the HELIX_API_KEY from your account page at [http://localhost:8080/account](http://localhost:8080/account)
+
+Add the secrets to your GitHub repository:
+
+1. Go to your GitHub repository settings
+2. Click on "Settings" tab
+3. In the left sidebar, click "Secrets and variables" -> "Actions"
+4. Click "New repository secret"
+5. Add the following secrets:
+   - Name: `HELIX_URL`
+     Value: The ngrok URL from above (e.g. https://abc123.ngrok.io)
+   - Name: `HELIX_API_KEY` 
+     Value: The API key from your Helix account page
+
+These secrets will be used by the GitHub Actions workflows to authenticate with your local Helix instance.
+
 
 # Continuous Integration: Testing
 
-Go to your helix account page (click the ... button in the bottom left and go to Account & API section, then copy and paste the `export` commands for `HELIX_URL` and `HELIX_API_KEY`).
+Go to your [helix account page](http://localhost:8080/account) (click the ... button in the bottom left and go to Account & API section, then copy and paste the `export` commands for `HELIX_URL` and `HELIX_API_KEY`).
 
 ```
 git checkout -b new-feature
