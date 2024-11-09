@@ -31,7 +31,7 @@ Requirements:
 * [kubectl](https://kubernetes.io/docs/tasks/tools/) or `brew install kubectl`
 * [helm](https://helm.sh/docs/intro/install/) or `brew install helm`
 * [flux cli](https://fluxcd.io/flux/installation/) or `brew install fluxcd/tap/flux`
-* [helix cli](https://docs.helix.ml/helix/private-deployment/controlplane/#just-install-the-cli) or `curl -sL -O https://get.helix.ml/install.sh && bash install.sh --cli --helix-version 1.4.0-rc6`
+* [helix cli](https://docs.helix.ml/helix/private-deployment/controlplane/#just-install-the-cli) or `curl -sL -O https://get.helix.ml/install.sh && bash install.sh --cli --helix-version 1.4.0-rc7`
 * [ngrok](https://ngrok.com/docs/getting-started/) or `brew install ngrok/ngrok/ngrok`
 
 We will run the `kind_helm_install.sh` script which will create a kind cluster and install helix in it via helm.
@@ -39,7 +39,7 @@ We will run the `kind_helm_install.sh` script which will create a kind cluster a
 For this deployment, to simplify things, we'll use [Together.ai](https://together.ai) as an external LLM provider (which provides free credit for new accounts), but you can later attach a Helix GPU runner [in Kubernetes](https://docs.helix.ml/helix/private-deployment/manual-install/kubernetes/#deploying-a-runner) or [otherwise](https://docs.helix.ml/helix/private-deployment/manual-install/).
 
 ```
-export HELIX_VERSION=1.4.0-rc6
+export HELIX_VERSION=1.4.0-rc7
 export TOGETHER_API_KEY=<your-together-key>
 bash kind_helm_install.sh
 ```
