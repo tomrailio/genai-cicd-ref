@@ -3,8 +3,8 @@
 This repo will show you how to create a complete CI/CD architecture for GenAI apps running on Kubernetes, supporting a fully private deployment.
 
 This example will run entirely locally on a `kind` cluster on your laptop.
-In development, we will use an external LLM `together.ai`.
-Helix will provide the versioned AI app implementation (prompt management, knowledge/RAG and API integrations) and evals (testing). Flux will manage deployment.
+In development, we will use an external LLM provider `together.ai`.
+Helix will provide the versioned AI app implementation (prompt management, knowledge/RAG and API integrations) and evals (testing). GitHub actions will run the evals in CI. Flux will manage deployment.
 
 ![Reference Architecture](images/ref.png)
 
