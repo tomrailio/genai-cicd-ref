@@ -104,7 +104,7 @@ It should look like this:
 
 ![3 terminals showing portforward and operator running side by side](images/3-terminals.png)
 
-Inside helix, the app should now be working. Go to the app store on the homepage, then launch the exchange rates app:
+Inside helix, the app should now be working. Go to the [app store](http://localhost:8080/appstore) on the homepage, then launch the exchange rates app:
 
 ![Screenshot of Exchange Rates Chatbot](images/exchangerates.png)
 
