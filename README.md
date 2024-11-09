@@ -8,7 +8,7 @@ Helix will provide the versioned AI app implementation (prompt management, knowl
 
 ![Reference Architecture](images/ref.png)
 
-There are two main flows: the CI (testing) flow where you can run `helix test` locally or in CI. And the CD flow where changes to AI apps merged to the main branch get reconciled into the cluster using Flux.
+There are two main flows: the CI (testing) flow where you can run `helix test` locally or in CI. And the CD flow where changes to AI apps merged to the main branch get reconciled into the cluster using Flux and deployed to Helix by the helix k8s operator.
 
 # Setup
 
