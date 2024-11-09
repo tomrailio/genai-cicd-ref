@@ -19,7 +19,11 @@ Start by forking this repo. This is because part of the workflow is pushing chan
 Then check out the repo on your local machine:
 
 ```
-git clone git@github.com:<yourusername>/genai-cicd-ref
+export GITHUB_USERNAME=<yourusername>
+```
+
+```
+git clone git@github.com:${GITHUB_USERNAME}/genai-cicd-ref
 cd genai-cicd-ref
 ```
 
