@@ -72,7 +72,7 @@ Register for a new account (in your local helix install, through the web interfa
 
       ![complete_user_registeration_screenshot](images/complete_user_registeration_screenshot.png)
 
-2. To access the app, log in to the local HelixML UI with your registered user credentials
+2. To access the app, log in to the local HelixML UI with your registered user credentials. Test out creating a chat session
 
    ![try_out_helix_ui_screenshot](images/try_out_helix_ui_screenshot.png)
 </details>
@@ -95,7 +95,7 @@ Leave the operator running in this terminal window. You should have two terminal
 
 Test that the operator is working by deploying an aispec just with `kubectl` in a new terminal window:
 ```
-kubectl apply -f aispecs/money.yaml
+kubectl apply -f aispecs/exchangerates.yaml
 ```
 
 It should look like this:
@@ -110,7 +110,7 @@ You can use it to query live currency exchange rates.
 
 Clean up the app:
 ```
-kubectl delete -f aispecs/money.yaml
+kubectl delete -f aispecs/exchangerates.yaml
 ```
 
 ## 3. Install Flux
@@ -148,11 +148,11 @@ Go to your helix account page (click the ... button in the bottom left and go to
 git checkout -b new-feature
 ```
 
-Edit the aispec `aispec/money.yaml` to add a feature or test.
+Edit the aispec `aispec/exchangerates.yaml` to add a feature or test.
 
 Run tests locally:
 ```
-helix test -f aispecs/money.yaml
+helix test -f aispecs/exchangerates.yaml
 ```
 
 Push to CI:

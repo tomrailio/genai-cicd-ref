@@ -1,7 +1,7 @@
 apiVersion: app.aispec.org/v1alpha1
 kind: AIApp
 metadata:
-  name: money
+  name: exchangerates
 spec:
   assistants:
     - model: meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo
