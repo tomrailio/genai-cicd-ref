@@ -20,10 +20,10 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install helix CLI
-        run: curl -sL -O https://get.helix.ml/install.sh && bash install.sh --cli -y
+        run: curl -sL -O https://get.helix.ml/install.sh && bash install.sh --cli -y --helix-version 1.4.0-rc7
 
       - name: Test the helix app
-        run: helix test
+        run: helix test -f aispecs/exchangerates.yaml
 
       - name: PR comment with file
         if: always()
@@ -31,18 +31,14 @@ jobs:
         with:
           file-path: summary_latest.md
 
-  deploy:
+  test-on-main:
     runs-on: ubuntu-latest
     if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     steps:
       - uses: actions/checkout@v4
 
       - name: Install helix CLI
-        run: curl -sL -O https://get.helix.ml/install.sh && bash install.sh --cli -y
+        run: curl -sL -O https://get.helix.ml/install.sh && bash install.sh --cli -y --helix-version 1.4.0-rc7
 
       - name: Test the helix app
-        run: helix test
-
-      - name: Apply changes
-        if: success()
-        run: helix apply -f helix.yaml
+        run: helix test -f aispecs/exchangerates.yaml
