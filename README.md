@@ -3,7 +3,8 @@
 This repo will show you how to create a complete CI/CD architecture for GenAI apps.
 
 This example will run entirely locally on a `kind` cluster on your laptop.
-In development, you can use an external LLM, such as `together.ai`.
+In development, we will use an external LLM `together.ai`.
+Helix will provide the versioned AI app implementation (prompt management, knowledge/RAG and API integrations) and evals (testing). Flux will manage deployment.
 
 ![Reference Architecture](ref.png)
 
