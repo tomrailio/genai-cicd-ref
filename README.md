@@ -172,6 +172,8 @@ Add the URL as a variable and API key as a secret to your GitHub repository:
 
 These credentials will be used by the GitHub Actions workflows to authenticate with your local Helix instance.
 
+Go to your Actions tab, find a failing run and re-run it to check that it works and tests the Helix app on the main branch.
+
 
 # Continuous Integration: Testing
 
