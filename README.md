@@ -32,7 +32,7 @@ Requirements:
 * [helm](https://helm.sh/docs/intro/install/) or `brew install helm`
 * [flux cli](https://fluxcd.io/flux/installation/) or `brew install fluxcd/tap/flux`
 
-We will run the `kind_helm_install.sh` script which will install helix in kind via helm.
+We will run the `kind_helm_install.sh` script which will create a kind cluster and install helix in it via helm.
 
 For this deployment, to simplify things, we'll use [Together.ai](https://together.ai) as an external LLM provider (which provides free credit for new accounts), but you can later attach a Helix GPU runner [in Kubernetes](https://docs.helix.ml/helix/private-deployment/manual-install/kubernetes/#deploying-a-runner) or [otherwise](https://docs.helix.ml/helix/private-deployment/manual-install/).
 
