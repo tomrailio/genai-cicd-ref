@@ -61,13 +61,20 @@ Register for a new account (in your local helix install, through the web interfa
 ![helix_login_page_screenshot](images/helix_login_page_screenshot.png)
 2. Register local user
    1. Bottom left pane - click on "Login/Register"
+
 ![helix_login_register_link_screenshot](images/helix_login_register_link_screenshot.png)
+
    2. Click on "Register" to begin the user registeration process
+
 ![user_registeration_link_screenshot](images/user_registeration_link_screenshot.png)
+
    3. Complete user registration
+
 ![complete_user_registeration_screenshot](images/complete_user_registeration_screenshot.png)
+
 2. To access the app, log in to the local HelixML UI with your registered user credentials
-![try_out_helix_ui_screenshot](images/try_out_helix_ui_screenshot.png)
+
+   ![try_out_helix_ui_screenshot](images/try_out_helix_ui_screenshot.png)
 </details>
 
 Install the aispec CRDs and start the Helix Kubernetes Operator. For now we do this by cloning the helix repo, but these will be properly packaged and released as container images soon. In a new terminal session (you will need go installed - e.g `brew install go`):
