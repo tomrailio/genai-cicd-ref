@@ -20,7 +20,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install helix CLI
-        run: curl -sL -O https://get.helix.ml/install.sh && bash install.sh --cli -y --helix-version 1.4.0-rc8
+        run: curl -sL -O https://get.helix.ml/install.sh && bash install.sh --cli -y --helix-version 1.4.0-rc9
 
       - name: Test the helix app
         run: helix test -f aispecs/exchangerates.yaml
@@ -38,7 +38,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install helix CLI
-        run: curl -sL -O https://get.helix.ml/install.sh && bash install.sh --cli -y --helix-version 1.4.0-rc8
+        run: curl -sL -O https://get.helix.ml/install.sh && bash install.sh --cli -y --helix-version 1.4.0-rc9
 
       - name: Test the helix app
         run: helix test -f aispecs/exchangerates.yaml
