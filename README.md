@@ -131,8 +131,12 @@ flux install
 Add your fork of this repo to flux:
 
 ```
+export GITHUB_USERNAME=<yourusername>
+```
+
+```
 flux create source git aispecs \
-    --url=https://github.com/<yourusername>/genai-cicd-ref \
+    --url=https://github.com/${GITHUB_USERNAME}/genai-cicd-ref \
     --branch=main
 ```
 
