@@ -23,7 +23,7 @@ jobs:
         run: curl -sL -O https://get.helix.ml/install.sh && bash install.sh --cli -y --helix-version 1.4.0-rc12
 
       - name: Test the helix app
-        run: helix test -f aispecs/exchangerates.yaml
+        run: helix test -f aispecs/exchangerates.yaml --evaluation-model meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo
 
       - name: PR comment with file
         if: always()
@@ -41,4 +41,4 @@ jobs:
         run: curl -sL -O https://get.helix.ml/install.sh && bash install.sh --cli -y --helix-version 1.4.0-rc12
 
       - name: Test the helix app
-        run: helix test -f aispecs/exchangerates.yaml
+        run: helix test -f aispecs/exchangerates.yaml --evaluation-model meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo
