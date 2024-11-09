@@ -62,15 +62,15 @@ Register for a new account (in your local helix install, through the web interfa
 2. Register local user
    1. Bottom left pane - click on "Login/Register"
 
-![helix_login_register_link_screenshot](images/helix_login_register_link_screenshot.png)
+      ![helix_login_register_link_screenshot](images/helix_login_register_link_screenshot.png)
 
    2. Click on "Register" to begin the user registeration process
 
-![user_registeration_link_screenshot](images/user_registeration_link_screenshot.png)
+      ![user_registeration_link_screenshot](images/user_registeration_link_screenshot.png)
 
    3. Complete user registration
 
-![complete_user_registeration_screenshot](images/complete_user_registeration_screenshot.png)
+      ![complete_user_registeration_screenshot](images/complete_user_registeration_screenshot.png)
 
 2. To access the app, log in to the local HelixML UI with your registered user credentials
 
