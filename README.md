@@ -154,19 +154,19 @@ In a new terminal, get the public URL:
 curl -s localhost:4040/api/tunnels | jq -r '.tunnels[0].public_url'
 ```
 
-The output will look something like: https://abc123.ngrok.io
+The output will look something like: `https://abc123.ngrok.io`
 
 Use this URL as your HELIX_URL in GitHub Actions secrets. Get the HELIX_API_KEY from your account page at [http://localhost:8080/account](http://localhost:8080/account)
 
 Add the secrets to your GitHub repository:
 
-1. Go to your GitHub repository settings
+1. Go to your GitHub repository settings for this repo
 2. Click on "Settings" tab
 3. In the left sidebar, click "Secrets and variables" -> "Actions"
 4. Click "New repository secret"
 5. Add the following secrets:
    - Name: `HELIX_URL`
-     Value: The ngrok URL from above (e.g. https://abc123.ngrok.io)
+     Value: The ngrok URL from above (e.g. `https://abc123.ngrok.io`)
    - Name: `HELIX_API_KEY` 
      Value: The API key from your Helix account page
 
