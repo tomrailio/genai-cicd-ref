@@ -12,6 +12,10 @@ spec:
         steps:
           - prompt: what is the usd to gbp exchange rate?
             expected_output: the usd to gbp exchange rate
+      - name: usdgbp
+        steps:
+          - prompt: usdgbp
+            expected_output: the usd to gbp exchange rate only. it should specifically mention both usd and gbp and not other currencies. if it mentions other currencies, FAIL the test
       apis:
         - name: Exchange Rates API
           description: Get latest currency exchange rates
