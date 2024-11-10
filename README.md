@@ -195,7 +195,7 @@ Edit the aispec `aispec/exchangerates.yaml` to add a feature or test.
 
 Run tests locally:
 ```
-helix test -f aispecs/exchangerates.yaml
+helix test -f aispecs/exchangerates.yaml --evaluation-model meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo
 ```
 
 Push to CI:
