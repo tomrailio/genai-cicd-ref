@@ -53,7 +53,14 @@ watch kubectl get po
 ```
 
 This will show helix starting up and running in your local kind cluster.
-Once all the pods are running, `ctrl+c` the `watch` and run the four commands the script printed at the end of the install to start a port-forward session. Leave that running.
+Once all the pods are running, `ctrl+c` the `watch` and run the four commands the script printed at the end of the install to start a port-forward session:
+```
+export POD_NAME=$(kubectl get pods --namespace default -l "app.kubernetes.io/name=helix-controlplane,app.kubernetes.io/instance=my-helix-controlplane" -o jsonpath="{.items[0].metadata.name}")
+export CONTAINER_PORT=$(kubectl get pod --namespace default $POD_NAME -o jsonpath="{.spec.containers[0].ports[0].containerPort}")
+echo "Visit http://localhost:8080 to use your application"
+kubectl --namespace default port-forward $POD_NAME 8080:$CONTAINER_PORT
+```
+Leave that running.
 
 Load [http://localhost:8080](http://localhost:8080) and you should see Helix. It takes a few minutes to boot.
 
