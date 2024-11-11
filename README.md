@@ -1,5 +1,7 @@
 # CI/CD for cloud-native GenAI reference architecture
 
+walkthrough: https://youtu.be/noilYeBqNUA?si=7awZFw5g_upbkPKc
+
 This repo will show you how to create a complete CI/CD architecture for GenAI apps running on Kubernetes, supporting a fully private deployment.
 
 This example will run entirely locally on a `kind` cluster on your laptop.
