@@ -11,7 +11,7 @@ spec:
       - name: check usd to gbp rate
         steps:
           - prompt: what is the usd to gbp exchange rate?
-            expected_output: the usd to gbp exchange rate
+            expected_output: the usd to gbp exchange rate. it's ok if it includes additional information such as the rate being based on the latest data.
       - name: usdgbp
         steps:
           - prompt: usdgbp
@@ -159,13 +159,15 @@ spec:
             Based on conversation below, construct a valid JSON object. In cases where user input does not contain information for a query, DO NOT add that specific query parameter to the output. If a user doesn't provide a required parameter, use sensible defaults for required params, and leave optional params out. Do not pass parameters as null, instead just don't include them.
             ONLY use search parameters from the user messages below - do NOT use search parameters provided in the examples.
 
+            If the user asks for a currency pair like "usdgbp", then split it apart into "usd" and "gbp", and search for the non-USD currency for example {"currency": "gbp"}
+
           response_success_template: |
             Present the key information in a concise manner and perform any actions requested by the user.
             Include relevant details, references, and links if present. Format the summary in Markdown for clarity and readability where appropriate, but don't mention formatting in your response unless it's relevant to the user's query.
             Make sure to NEVER mention technical terms like "APIs, JSON, Request, etc..." and use first person pronoun (say it as if you performed the action)
 
-            Issues and tasks mean the same thing.
-            IMPORTANT: If the user asks you to write code, you MUST write code. Start by describing the task described in the issue, and then write the code to perform the task.
+            If the user presented a currency pair e.g. usdgbp, and we searched for the non-USD currency, then present ONLY the USD to given currency rate, NOT including any other currencies other than the two in the currency pair the user provided.
+
 
           response_error_template: |
             As an AI chat assistant, your job is to help the user understand and resolve API error messages.
